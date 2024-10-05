@@ -1,19 +1,124 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pet Adopt Centre</title>
+    <title>Peddy</title>
 
     <!-- for daisy ui -->
-
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.12/dist/full.min.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- for google font --- lato  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+        rel="stylesheet">
+
+    <!-- for font awesome linking  -->
+    <script src="https://kit.fontawesome.com/710476f014.js" crossorigin="anonymous"></script>
+
+    <style>
+        .lato-thin {
+            font-family: "Lato", sans-serif;
+        }
+    </style>
 </head>
 
-<body>
-    <h1>hello pet lovers</h1>
+<body class="lato-thin">
+    <header>
+        <nav class="max-w-screen-xl mx-auto py-5">
+            <div class="navbar bg-base-100">
+                <div class="navbar-start">
+                    <div class="dropdown">
+                        <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4 6h16M4 12h8m-8 6h16" />
+                            </svg>
+                        </div>
+                        <ul tabindex="0"
+                            class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 text-xl shadow">
+                            <li><a>Home</a></li>
+                            <li>
+                                <a>Shop</a>
+                            </li>
+                            <li><a>Contact</a></li>
+                        </ul>
+                    </div>
+                    <a class="text-3xl font-bold cursor-pointer flex items-center justify-center gap-2"><img src="./images/logo.webp" alt="">Peddy</a>
+                </div>
+                <div class="navbar-center hidden lg:flex">
+                    <ul class="menu menu-horizontal px-1 text-xl">
+                        <li><a>Home</a></li>
+                        <li>
+                            <a href="">Shop</a>
+                        </li>
+                        <li><a>Contact</a></li>
+                    </ul>
+                </div>
+                <div class="navbar-end">
+                    <button class="border rounded-full p-2 border-teal-300">
+                        <img class="w-6" src="https://img.icons8.com/?size=100&id=82751&format=png&color=000000" alt="">
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="max-w-screen-xl mx-auto px-5">
+        <section class="items-center flex flex-col gap-6">
+            <div class="flex flex-col items-center justify-center gap-3 md:w-6/12 mx-auto text-center">
+                <h4 class="text-gray-500 font-bold ">Bringing Families Together ❤️‍🔥 </h4>
+                <h1 class="lg:text-5xl md:text-3xl text-2xl font-black">Your Path to Adoption Starts Here</h1>
+                <p class="text-gray-500">Pet adoption offers animals a second chance at life, providing them with loving homes while reducing overpopulation in shelters.</p>
+            </div>
+            <div class="">
+                <button class="btn bg-teal-800 text-white text-xl">View More</button>
+            </div>
+            <div>
+                <img src="./images/pet.webp" alt="">
+            </div>
+
+        </section>
+
+    </main>
+    
+    <footer class="bg-black">
+        <section class="footer text-white text-base-content justify-between p-5 mx-auto max-w-screen-xl py-20">
+            <nav>
+                <div class="grid grid-flow-col gap-4">
+                    <a class="text-3xl font-bold cursor-pointer flex items-center justify-center gap-2"><img src="./images/logo.webp" alt="">Peddy</a>
+                </div>
+                <ul class="flex flex-col gap-2"><li>Location: av. Washington 165,NY CA 54003</li>
+                   <li> Phone: +31 85 964 47 25</li>
+                   <li> Email: info@yourdomain.com</li>
+                    <li>Openings hours: 9.00 AM - 5.00 PM</li></ul>
+                <div class="flex gap-3 text-2xl">
+                    <i class="fa-brands fa-facebook"></i>
+                    <i class="fa-brands fa-instagram"></i>
+                    <i class="fa-brands fa-x-twitter"></i>
+                    <i class="fa-brands fa-youtube"></i>                    
+                </div>
+              </nav>
+            <nav>
+              <h6 class="footer-title">Usefull Links</h6>
+              <a class="link link-hover">Home</a>
+              <a class="link link-hover">About</a>
+              <a class="link link-hover">Animals</a>
+              <a class="link link-hover">Foundation</a>
+              <a class="link link-hover">Contact</a>
+            </nav>
+            <nav>
+              <h6 class="footer-title">Drop a massage</h6>
+              <input type="text" placeholder="Type here" class="input input-bordered w-full max-w-xs bg-gray-800 text-white" />
+              <button class="btn bg-teal-800 border-teal-800 text-white w-full">Subscribe</button>
+            </nav>
+          </section>
+    </footer>
 
 
     <script src="./js/index.js"></script>
