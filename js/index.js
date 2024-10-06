@@ -233,7 +233,24 @@ const openModal = (buttonElement) => {
 // for disable the button 
 const buttonDisable =(buttonElement) =>{
     // const button = document.getElementById('disable-adopt-btn');
-    console.log(buttonElement);
     buttonElement.disabled = true;
     buttonElement.innerText = 'Adopted'
+}
+
+
+// for decending order each item 
+
+const decendingOrder = async()=>{
+    const response = await fetch(`https://openapi.programming-hero.com/api/peddy/pets`)
+    const data = await response.json();
+    const pets = data.pets;
+    console.log(pets);
+
+    // for shorting the pets data 
+    const shortedPetData = pets.sort((a, b) =>{
+        const priceA = a.price || 0;
+        const priceB = b.price || 0;
+        return priceB - priceA;
+    })
+    displayData(shortedPetData);
 }
