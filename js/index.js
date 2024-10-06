@@ -93,7 +93,7 @@ const showCatagory = (items) => {
         const petCatagoryButton = document.getElementById('pet-catagory-btn');
         const div = document.createElement('div');
         div.innerHTML = `
-                <button onclick="getCatagoryItem('${category}')" class="btn btn-outline border-[#0E7A811A] h-20 w-full flex items-center justify-center gap-3 py-4 hover:text-black hover:bg-white">
+                <button onclick="getCatagoryItem('${category}')" class="btn btn-outline active:bg-teal-200 active:rounded-3xl border-[#0E7A811A] h-20 w-full flex items-center justify-center gap-3 py-4 hover:text-black hover:bg-white">
                     <img src="${category_icon}" alt="">
                     <p class="text-2xl font-bold">${category}</p>
                 </button>
