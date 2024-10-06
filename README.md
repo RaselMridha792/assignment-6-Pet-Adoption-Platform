@@ -13,6 +13,16 @@
  # ES6 features used for this website:
  - 1. **Arrow Functions:** I have used arrow functions in several places, such as in [const loadData = async () => { ... } and const spinnerItem = (petContainer) => { ... }.
  ]
- - 2. **Async/Await:** I have used async/await for calling api and fetch the data. such as in [const loadData = async () => { ... } and const getCatagoryItem = async (category) => { ... }.]
+ - 2. **Async/Await:** I have used async/await for calling api and fetch the data. such as in [const loadData = async () => { ... } and const getCatagoryItem = async (category) => { ... }]
 
- - 3. **Destructuring Assignment:** I have used Destructuring to used to extract properties from objects, such as in [const { image, pet_name, breed, date_of_birth, gender, price, petId } = pet;.]
+ - 3. **Destructuring Assignment:** I have used Destructuring to used to extract properties from objects, such as in [const { image, pet_name, breed, date_of_birth, gender, price, petId } = pet;]
+
+ - 4. **Template Literals:** I have used Template literals for extensively for string interpolation, e.g., [const div = document.createElement('div'); div.innerHTML = \<div class="card bg-base-100 shadow-lg">...`;`]
+
+ - 5. **const and let:** const and let are used for variable declarations, improving block scope and preventing hoisting issues.
+
+ - 6. **Promises:** While using fetch, I was implicitly using Promises, which are part of the ES6 feature set for handling asynchronous operations.
+
+ # live-link to the deployed Project--- surge:
+
+ (https://assignment-6-peddy-website.surge.sh)
