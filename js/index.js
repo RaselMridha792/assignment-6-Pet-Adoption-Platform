@@ -12,17 +12,22 @@ setTimeout(() => {
 
 }, 2000);
 
+const spinnerItem = (petContainer) => {
+    const spinnerContainer = document.getElementById('main-container')
+    petContainer.innerHTML = `
+    <div id="spinner" class="col-span-3 flex items-center justify-center">
+        <span class="loading loading-bars loading-lg w-16"></span>
+    </div>
+`
+}
+
 const displayData = (pets) => {
     const petContainer = document.getElementById('pets-container');
     petContainer.innerHTML = '';
+    spinnerItem(petContainer)
 
     // for implementing spinner 
-    petContainer.innerHTML =`
-                <div id="spinner" class="col-span-3 flex items-center justify-center">
-                    <span class="loading loading-bars loading-lg w-16"></span>
-                </div>
-    `
-    
+
     setTimeout(() => {
         document.getElementById('spinner').classList.add('hidden');
         if (pets.length === 0) {
@@ -58,10 +63,11 @@ const displayData = (pets) => {
                           <p class="flex gap-2"><img class="w-5 max-h-5" src="https://img.icons8.com/?size=100&id=1665&format=png&color=000000" />  Gender: ${gender ? gender : 'not Available'}</p>
                           <p class="flex gap-2"><img class="w-5 max-h-5" src="https://img.icons8.com/?size=100&id=2971&format=png&color=000000" />  Price: ${price ? price : 'not Available'}</p>
                           <hr/>
+                          </div>
                           <div class="grid grid-cols-3 lg:grid-cols-3 md:grid-cols-2 gap-2 item-center justify-between mt-5">
                             <button id="like-button" onclick="displayImage(${petId})" class="btn btn-outline btn-accent "><i class="fa-regular fa-thumbs-up text-teal-700 border-teal-800"></i></button>
                             <button class="btn btn-outline btn-accent">Adopt</button>
-                            <button class="btn btn-outline btn-accent">Details</button>
+                            <button class="btn btn-outline btn-accent" onclick="showModalBox(${petId})">Details</button>
                           </div>
                         </div>
                       </div>
@@ -100,11 +106,13 @@ const showCatagory = (items) => {
 }
 
 
-// for active button style applying 
+// scroll into div function 
+document.getElementById('adopt-scroll-btn').addEventListener('click', function () {
+    document.getElementById('adopt-section').scrollIntoView({ behavior: "smooth" });
+})
 
 loadCatagory()
 
-// https://openapi.programming-hero.com/api/peddy/category/
 
 const getCatagoryItem = async (category) => {
 
@@ -115,20 +123,9 @@ const getCatagoryItem = async (category) => {
 
 }
 
-const showCatagoryItem = (pet) => {
-    pet.forEach(item => {
-        const pets = item.category;
-        // console.log(pets);
-        // loadData(pet);
-    })
-}
-
-
-
-
 // get images by clicking like button 
 
-const displayImage = async (id) => {
+const displayImage = async (id, modalData) => {
     const response = await fetch(`https://openapi.programming-hero.com/api/peddy/pet/${id}`);
     const data = await response.json();
     showImage(data.petData)
@@ -136,6 +133,7 @@ const displayImage = async (id) => {
 }
 
 const showImage = (pet) => {
+    console.log(pet)
     const image = pet.image;
     console.log(image);
     const imageContainer = document.getElementById('image-container');
@@ -145,3 +143,75 @@ const showImage = (pet) => {
     `;
     imageContainer.appendChild(div);
 }
+
+// show modal 
+const showModalBox = async (id)=>{
+    const response = await fetch(`https://openapi.programming-hero.com/api/peddy/pet/${id}`)
+    const data = await response.json();
+    displayModal(data.petData)
+}
+
+const displayModal = (data) =>{
+    const {petId, breed, category, date_of_birth, price, image, gender, pet_details, vaccinated_status, pet_name} = data;
+    const modalBox = document.getElementById('detailsModal');
+    modalBox.innerHTML = '';
+    const div = document.createElement('div');
+    div.innerHTML = `
+                <div class="modal-box w-11/12 max-w-5xl">
+                    <img class="p-10 w-full rounded" src="${image}" alt="">
+                    <h2 class="card-title text-2xl my-2">${pet_name ? pet_name : 'not Available'}</h2>
+                <div class="text-gray-500">
+                    <div class="flex flex-col md:flex-row md:gap-5">
+                        <div>
+                            <p class="flex gap-2"><img class="w-5 max-h-5" src="https://img.icons8.com/?size=100&id=8gmS8B8ERDZk&format=png&color=000000" /> Breed:
+                                ${breed ? breed : 'not Available'}</p>
+                            <p class="flex gap-2"><img class="w-5 max-h-5"
+                                    src="https://img.icons8.com/?size=100&id=89201&format=png&color=000000" /> Birth:
+                                ${date_of_birth ? date_of_birth : 'not available'}</p>
+                        </div>
+                        <div>
+                            <p class="flex gap-2"><img class="w-5 max-h-5"
+                                    src="https://img.icons8.com/?size=100&id=1665&format=png&color=000000" /> Gender:
+                                ${gender ? gender : 'not Available'}</p>
+                            <p class="flex gap-2"><img class="w-5 max-h-5"
+                                    src="https://img.icons8.com/?size=100&id=2971&format=png&color=000000" /> Price: ${price
+                                ? price : 'not Available'}</p>
+                        </div>
+                    </div>
+                    <p class="flex gap-2"><img class="w-5 max-h-5"
+                            src="https://img.icons8.com/?size=100&id=2971&format=png&color=000000" /> Price: ${price ?
+                        price : 'not Available'}</p>
+                    <hr class="my-5" />
+                </div>
+                <div>
+                    <h1 class="text-xl font-bold">details Information</h1>
+                    <p class="text-gray-500">${pet_details}</p>
+                </div>
+                <div class="modal-action">
+                    <form method="dialog" class="w-full">
+                      <!-- if there is a button, it will close the modal -->
+                      <button class="btn w-full bg-teal-700 text-white hover:text-black">Close</button>
+                    </form>
+                </div>
+            </div>
+    `;
+    modalBox.appendChild(div);
+
+    
+    // showing the modal by clicking 
+    modalBox.showModal();
+}
+
+
+// {
+//     "petId": 4,
+//     "breed": "Holland Lop",
+//     "category": "Rabbit",
+//     "date_of_birth": "2023-06-30",
+//     "price": 200,
+//     "image": "https://i.ibb.co.com/4g3Jrjf/pet-4.jpg",
+//     "gender": "Female",
+//     "pet_details": "This adorable female Holland Lop rabbit, born on June 30, 2023, is known for her calm and gentle nature. She thrives in quiet environments and enjoys being handled with care. Priced at $200, she is an ideal pet for those looking for a low-maintenance, friendly rabbit. Note that she is not vaccinated.",
+//     "vaccinated_status": "Not",
+//     "pet_name": "Nibbles"
+// }

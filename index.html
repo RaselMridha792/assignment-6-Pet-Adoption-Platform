@@ -79,7 +79,7 @@
                     homes while reducing overpopulation in shelters.</p>
             </div>
             <div class="">
-                <button class="btn bg-teal-800 text-white text-xl">View More</button>
+                <button id="adopt-scroll-btn" class="btn bg-teal-800 text-white text-xl">View More</button>
             </div>
             <div>
                 <img src="./images/pet.webp" alt="">
@@ -87,7 +87,7 @@
 
         </section>
         <section>
-            <div class="text-center md:mt-20 mb-10 flex flex-col gap-5 mx-auto md:w-5/12">
+            <div id="adopt-section" class="text-center md:mt-20 mb-10 flex flex-col gap-5 mx-auto md:w-5/12">
                 <h1 class="md:text-4xl text-2xl font-black">Adopt Your Best Friend</h1>
                 <p class="text-gray-600 text-lg">
                     a loving pet! They bring joy, companionship, and unconditional love, enriching your life forever.
@@ -101,16 +101,21 @@
                 <button class="btn btn-success bg-teal-800 text-white">Short By Price</button>
             </div>
         </section>
-        <section class="flex flex-col md:flex-row gap-5 my-10">
+        <section id="main-container" class="flex flex-col md:flex-row gap-5 my-10">
             <div id="pets-container" class="md:w-9/12 grid lg:grid-cols-3 md:grid-cols-2 gap-5 border rounded-xl">
             </div>
 
             <!-- show pets image  -->
-             <div class="min-h-72 shadow-lg border rounded-lg p-5">
-                <div id="image-container" class="lg:w-80 md:w-56 grid grid-cols-2 gap-2">              
+            <div class="min-h-72 shadow-lg border rounded-lg p-5">
+                <div id="image-container" class="lg:w-80 md:w-56 grid grid-cols-2 gap-2">
                 </div>
-             </div>
+            </div>
         </section>
+
+        <!-- You can open the modal using ID.showModal() method -->
+        <!-- You can open the modal using ID.showModal() method -->
+        <dialog id="detailsModal" class="modal">
+        </dialog>
 
     </main>
 
